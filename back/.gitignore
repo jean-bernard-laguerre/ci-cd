@@ -1,0 +1,4 @@
+.air.toml
+tmp/
+backups/mysql/*.sql
+backups/postgres/*.sql

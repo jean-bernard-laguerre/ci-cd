@@ -1,0 +1,14 @@
+FROM golang:1.23.1-alpine3.20
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+RUN go install github.com/air-verse/air@latest
+
+RUN apk update && \
+    apk add --no-cache \
+    mariadb-connector-c \
+    mysql-client \
+    postgresql16-client
+
+ENTRYPOINT [ "air" ]
