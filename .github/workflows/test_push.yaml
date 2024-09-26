@@ -37,6 +37,15 @@ jobs:
         # This is the output variable
         # We can access this variable in other jobs using `needs.get-repo-name.outputs.repo-name`
 
+  get-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get secret
+        run: echo "Secret is ${{ secrets.CHAT_LINK }}"
+
   get-user-infos:
     # récupérer les infos de l'utilisateur venant du repo
     needs: get-repo-name
