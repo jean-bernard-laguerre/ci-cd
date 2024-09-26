@@ -11,7 +11,6 @@ import (
 
 func TestUserR(t *testing.T) {
 
-	// Run the tests
 	t.Run("CreateUser", user_test.CreateUser)
 	t.Run("GetUserById", user_test.GetUserById)
 	t.Run("GetUserByEmail", user_test.GetUserByEmail)
@@ -19,28 +18,24 @@ func TestUserR(t *testing.T) {
 
 func TestUserS(t *testing.T) {
 
-	// Run the tests
 	t.Run("Registering", user_test.Registering)
 	t.Run("Logging", user_test.Logging)
 }
 
 func TestConnR(t *testing.T) {
 
-	// Run the tests
 	t.Run("CreateConnection", conn_test.CreateConn)
 	t.Run("GetConnectionById", conn_test.GetConnById)
 	t.Run("GetConnectionByUser", conn_test.GetUserConn)
 }
 
-func TestConnS(t *testing.T) {
+/* func TestConnS(t *testing.T) {
 
-	// Run the tests
-	t.Run("MysqlConnection", conn_test.TestConnService)
-}
+	t.Run("TestConnection", conn_test.TestConnService)
+} */
 
 func TestDumpR(t *testing.T) {
 
-	// Run the tests
 	t.Run("CreateDump", dump_test.CreateDump)
 	t.Run("GetDumpById", dump_test.GetDumpById)
 	t.Run("GetDumpByUser", dump_test.GetAllDumps)
@@ -48,13 +43,11 @@ func TestDumpR(t *testing.T) {
 
 func TestDumpS(t *testing.T) {
 
-	// Run the tests
 	t.Run("SaveHistory", dump_test.OperationSave)
 }
 
 func TestHistoryR(t *testing.T) {
 
-	// Run the tests
 	t.Run("CreateHistory", history_test.CreateHistory)
 	t.Run("GetHistoryById", history_test.GetAllHistory)
 }

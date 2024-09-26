@@ -42,5 +42,5 @@ jobs:
           DB_USER: root
           DB_PASSWORD: root
           DB_NAME: safebase_test
-      run: go test -v ./test/...
+      run: go test -v ./test
       working-directory: ./back

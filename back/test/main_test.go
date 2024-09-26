@@ -1,7 +1,6 @@
 package test
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"testing"
@@ -12,7 +11,6 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	fmt.Println("Running tests...")
 	var err error
 
 	// Setup the test database
@@ -35,6 +33,5 @@ func TestMain(m *testing.M) {
 	}
 
 	// Exit with the test code
-	fmt.Println("Tests finished")
 	os.Exit(code)
 }
