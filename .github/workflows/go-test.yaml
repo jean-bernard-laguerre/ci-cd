@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  test:
+  run-go-test:
     runs-on: ubuntu-latest
 
     services:
