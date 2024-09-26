@@ -24,9 +24,6 @@ func Login(email string, password string) (UserModel, error) {
 	user := UserModel{}
 	user, _ = user.GetByEmail(email)
 
-	fmt.Println(user)
-	fmt.Println(email)
-
 	if user.Email == "" {
 		fmt.Println("Email does not exist")
 		return user, fmt.Errorf("Email does not exist")
