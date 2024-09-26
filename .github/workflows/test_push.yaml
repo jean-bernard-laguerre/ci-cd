@@ -72,7 +72,8 @@ jobs:
       - name: Google Chat Notification Action
         uses: SimonScholz/google-chat-action@v1.1.0
         with:
-          webhookUrl: "$CHAT_LINK"
+          webhookUrl: "${{ secrets.CHAT_LINK }}"
+          # webhookUrl: "$CHAT_LINK"
           # #this is the webhook url of the google chat room (secret works on github)
           # webhookUrl: "https://chat.googleapis.com/v1/spaces/AAAAhVObDmw/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=KAmOJBi0sUbs34BJVzMTScvbFvQEiaHMpUDU-xpphms"
           ## en dure car act ne prend pas en compte les secrets
