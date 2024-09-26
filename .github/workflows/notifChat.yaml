@@ -1,27 +1,11 @@
-name: TestPush
+name: Notif Google Chat
 on:
-  push:
+  pull_request:
+    branches:
+      - master
+      - main
 
 jobs:
-  # test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-
-  #     - name: Set up Go
-  #       uses: actions/setup-go@v2
-  #       with:
-  #         go-version: 1.23.1
-
-  #     - name: Install dependencies
-  #       run: go mod tidy
-  #       working-directory: ./back
-
-  #     - name: Run tests
-  #       run: go test ./...
-  #       working-directory: ./back/test
-
   get-repo-name:
     runs-on: ubuntu-latest
     outputs:
@@ -36,15 +20,6 @@ jobs:
         id: get-repo-name
         # This is the output variable
         # We can access this variable in other jobs using `needs.get-repo-name.outputs.repo-name`
-
-  get-secret:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Get secret
-        run: echo "Secret is ${{ secrets.CHAT_LINK }}"
 
   get-user-infos:
     # récupérer les infos de l'utilisateur venant du repo
