@@ -1,0 +1,72 @@
+name: TestPush
+on:
+  push:
+
+jobs:
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Set up Go
+  #       uses: actions/setup-go@v2
+  #       with:
+  #         go-version: 1.23.1
+
+  #     - name: Install dependencies
+  #       run: go mod tidy
+  #       working-directory: ./back
+
+  #     - name: Run tests
+  #       run: go test ./...
+  #       working-directory: ./back/test
+
+  get-repo-name:
+    runs-on: ubuntu-latest
+    outputs:
+      repo-name: ${{ github.repository }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get repo name
+        run: echo "Repo name is ${{ github.repository }}"
+
+        id: get-repo-name
+        # This is the output variable
+        # We can access this variable in other jobs using `needs.get-repo-name.outputs.repo-name`
+
+  get-user-infos:
+    # récupérer les infos de l'utilisateur venant du repo
+    needs: get-repo-name
+    runs-on: ubuntu-latest
+    outputs:
+      user: ${{ github.actor }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get user infos
+        run: echo "User infos are ${{ github.actor }}"
+        id: get-user-infos
+
+  # send-chat:
+  #   needs: get-repo-name
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+
+  #     - name: Google Chat Notification Action
+  #       uses: SimonScholz/google-chat-action@v1.1.0
+  #       with:
+  #         # webhookUrl: "${{ secrets.CHAT_LINK }}"
+  #         # this is the webhook url of the google chat room (secret works on github)
+  #         webhookUrl: "https://chat.googleapis.com/v1/spaces/AAAAhVObDmw/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=KAmOJBi0sUbs34BJVzMTScvbFvQEiaHMpUDU-xpphms"
+  #         # en dure car act ne prend pas en compte les secrets
+  #         jobStatus: ${{ job.status }}
+  #         title: "${{ needs.get-repo-name.outputs.repo-name }}"
+  #         subtitle: "Test de l'envoi de message sur google chat"
+  #         imageUrl: "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+  #         imageType: Circle
