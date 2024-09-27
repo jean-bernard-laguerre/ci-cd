@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - main
+  push:
 
 jobs:
   get-repo-name:
@@ -53,26 +54,34 @@ jobs:
           subtitle: "Pull Request sur le main || repo: ${{ needs.get-repo-name.outputs.repo-name }}"
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
           imageType: Circle
-          sections: |
+          additionalSections: |
             - header: "Description"
               widgets:
                 - textParagraph: 
                     text: "Une nouvelle pull request a été créée sur le repo ${{ needs.get-repo-name.outputs.repo-name }} par ${{ needs.get-user-infos.outputs.user }}."
 
-            - header: "Détails"
+            - header: "Actions"
               widgets:
-                - keyValue: 
-                    topLabel: "Nom de la pull request"
-                    content: "PR #${{ github.event.number }}"
+                - buttons:
+                    - textButton:
+                        text: "Voir la pull request"
+                        onClick: {
+                          openLink: {
+                            url: "${{ github.event.pull_request.html_url }}"
+                          }
+                        }
 
-                - keyValue: 
-                    topLabel: "Titre"
-                    content: "${{ github.event.pull_request.title }}"
-
-                - keyValue: 
-                    topLabel: "Auteur"
+            - header: "Informations"
+              widgets:
+                - keyValue:
+                    topLabel: "Repository"
+                    content: "${{ needs.get-repo-name.outputs.repo-name }}"
+                - keyValue:
+                    topLabel: "Créateur"
                     content: "${{ needs.get-user-infos.outputs.user }}"
-
-                - keyValue: 
+                - keyValue:
                     topLabel: "Statut"
                     content: "${{ job.status }}"
+                - keyValue:
+                    topLabel: "Date"
+                    content: "${{ github.event.pull_request.created_at }}"
