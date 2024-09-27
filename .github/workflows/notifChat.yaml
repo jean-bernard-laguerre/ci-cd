@@ -54,18 +54,5 @@ jobs:
           subtitle: "Pull Request sur le main || repo: ${{ needs.get-repo-name.outputs.repo-name }}"
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
           imageType: Circle
-          additionalSections: |
-            - header: "Description"
-              widgets:
-                - textParagraph:
-                    text: "Une nouvelle pull request a été créée sur le repo ${{ needs.get-repo-name.outputs.repo-name }} par ${{ needs.get-user-infos.outputs.user }}. Vous pouvez la consulter [ici](${{ github.event.pull_request.html_url }})."
-            - header: "Actions"
-              widgets:
-                - buttons:
-                    textButton:
-                      text: "Consulter la PR"
-                      onClick: {
-                        openLink: {
-                          url: "${{ github.event.pull_request.html_url }}"
-                        }
-                      }
+          # additionalSections: '[{"header": "Additional Section", "collapsible": true, "widgets": [{"decoratedText": {"startIcon": {"knownIcon": "STAR"},"text": "Additional Section"}}] }]'
+          additionalSections: '[{"header": "Information", "widgets": [{"keyValue": {"topLabel": "Repository", "content": "${{ needs.get-repo-name.outputs.repo-name }}"}}, {"keyValue": {"topLabel": "User", "content": "${{ needs.get-user-infos.outputs.user }}"}}, {"keyValue": {"topLabel": "Status", "content": "${{ job.status }}"}}] }]'
