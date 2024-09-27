@@ -70,20 +70,3 @@ jobs:
                             url: "${{ github.event.pull_request.html_url }}"
                           }
                         }
-
-            - header: "Informations"
-              widgets:
-                - keyValue:
-                    topLabel: "Repository"
-                    content: "${{ needs.get-repo-name.outputs.repo-name }}"
-                - keyValue:
-                    topLabel: "Créateur"
-                    content: "${{ needs.get-user-infos.outputs.user }}"
-                - keyValue:
-                    topLabel: "Statut"
-                    content: "${{ job.status }}"
-                - keyValue:
-                    topLabel: "Date"
-                    content: "${{ github.event.pull_request.created_at }}"
-
-```
