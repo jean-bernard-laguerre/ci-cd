@@ -49,7 +49,30 @@ jobs:
         with:
           webhookUrl: "${{ secrets.CHAT_LINK }}"
           jobStatus: ${{ job.status }}
-          title: "${{ needs.get-repo-name.outputs.repo-name }}"
-          subtitle: "Pull Request sur le main"
+          title: "${{ needs.get-user-infos.outputs.user }} a créé une pull request"
+          subtitle: "Pull Request sur le main || repo: ${{ needs.get-repo-name.outputs.repo-name }}"
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
           imageType: Circle
+          sections: |
+            - header: "Description"
+              widgets:
+                - textParagraph: 
+                    text: "Une nouvelle pull request a été créée sur le repo ${{ needs.get-repo-name.outputs.repo-name }} par ${{ needs.get-user-infos.outputs.user }}."
+
+            - header: "Détails"
+              widgets:
+                - keyValue: 
+                    topLabel: "Nom de la pull request"
+                    content: "PR #${{ github.event.number }}"
+
+                - keyValue: 
+                    topLabel: "Titre"
+                    content: "${{ github.event.pull_request.title }}"
+
+                - keyValue: 
+                    topLabel: "Auteur"
+                    content: "${{ needs.get-user-infos.outputs.user }}"
+
+                - keyValue: 
+                    topLabel: "Statut"
+                    content: "${{ job.status }}"
