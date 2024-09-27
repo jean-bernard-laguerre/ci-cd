@@ -59,3 +59,12 @@ jobs:
               widgets:
                 - textParagraph:
                     text: "Une nouvelle pull request a été créée sur le repo ${{ needs.get-repo-name.outputs.repo-name }} par ${{ needs.get-user-infos.outputs.user }}."
+
+            - header: "Actions"
+              widgets:
+                - buttons:
+                    textButton:
+                      text: "Voir la pull request"
+                      onClick:
+                        openLink:
+                          url: "${{ github.event.pull_request.html_url }}"
