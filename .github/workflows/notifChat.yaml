@@ -55,4 +55,4 @@ jobs:
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
           imageType: Circle
           # additionalSections: '[{"header": "Additional Section", "collapsible": true, "widgets": [{"decoratedText": {"startIcon": {"knownIcon": "STAR"},"text": "Additional Section"}}] }]'
-          additionalSections: '[{"header": "Information", collapsible: true, widgets: [{"decoratedText": {"text": "Pull Request sur le main"}}], "header": "Actions", collapsible: true, widgets: [{"decoratedText": {"text": "Merge"}}]}]'
+          additionalSections: '[{"header": "Information", "collapsible": true, "widgets": [{"decoratedText": {"text": "Pull Request sur le main"}}], "header": "Actions", "collapsible": true, "widgets": [{"decoratedText": {"text": "Merge"}}]}]'
