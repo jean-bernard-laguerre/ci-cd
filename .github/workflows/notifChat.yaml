@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - main
+  push:
 
 jobs:
   get-repo-name:
@@ -49,7 +50,9 @@ jobs:
         with:
           webhookUrl: "${{ secrets.CHAT_LINK }}"
           jobStatus: ${{ job.status }}
-          title: "${{ needs.get-repo-name.outputs.repo-name }}"
-          subtitle: "Pull Request sur le main"
+          title: "${{ needs.get-user-infos.outputs.user }} a créé une pull request"
+          subtitle: "Pull Request sur le main || repo: ${{ needs.get-repo-name.outputs.repo-name }}"
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
           imageType: Circle
+          # additionalSections: '[{"header": "Additional Section", "collapsible": true, "widgets": [{"decoratedText": {"startIcon": {"knownIcon": "STAR"},"text": "Additional Section"}}] }]'
+          additionalSections: '[{"header": "Information", "collapsible": true, "widgets": [{"decoratedText": {"text": "Pull Request sur le main"}}]},{"header": "Action", "collapsible": false, "widgets": [{"decoratedText": {"text": "TEST"}}]}]'
