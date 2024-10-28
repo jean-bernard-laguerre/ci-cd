@@ -1,5 +1,4 @@
 name: Run go tests
-
 on:
   pull_request:
     branches:

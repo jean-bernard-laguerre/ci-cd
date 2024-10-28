@@ -1,10 +1,10 @@
-name: Notif Google Chat
-on:
-  pull_request:
-    branches:
-      - master
-      - main
-  push:
+# name: Notif Google Chat
+# on:
+#   pull_request:
+#     branches:
+#       - master
+#       - main
+#   push:
 
 jobs:
   get-repo-name:
