@@ -128,9 +128,7 @@ const DatabaseView = () => {
         </table>
       ) : (
         <div className="text-center text-sm">
-          <span>
-            You have no saved database.
-          </span>
+          <span>You have no saved database.</span>
         </div>
       )}
 
