@@ -1,5 +1,6 @@
 import { actions as connect } from "@/services/connectionService";
 import { actions as dump } from "@/services/dumpService";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 interface History {
   Id: number;
@@ -36,9 +37,9 @@ const RestoreForm = ({
   history: History;
   close: () => void;
 }) => {
-  const [restoreTarget, setRestoreTarget] = React.useState<number>(0);
-  const [databases, setDatabases] = React.useState<Databases>();
-  const [formOk, setFormOk] = React.useState<boolean>(false);
+  const [restoreTarget, setRestoreTarget] = useState<number>(0);
+  const [databases, setDatabases] = useState<Databases>();
+  const [formOk, setFormOk] = useState<boolean>(false);
 
   async function getUserDatabase() {
     // get user databases
@@ -99,9 +100,7 @@ const RestoreForm = ({
             setRestoreTarget(parseInt(e.target.value));
           }}
         >
-          <option value={0}>
-            Select a database
-          </option>
+          <option value={0}>Select a database</option>
           {databases?.databases.map((database) => (
             <option key={database.Id} value={database.Id}>
               <span>
