@@ -33,6 +33,6 @@ func main() {
 	// Start cronjob
 	dump.InitCron()
 
-	// Start server on http://localhost:3000
-	app.Listen(":3000")
+	// Start server on http://localhost:8080
+	app.Listen(":8080")
 }
