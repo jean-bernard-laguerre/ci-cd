@@ -7,10 +7,10 @@ import { toast } from "sonner";
 import { DatabaseForm } from "../Forms/DatabaseForm";
 import Modal from "../Modal";
 
-interface User {
-  id: number;
-  email: string;
-}
+// interface User {
+//   id: number;
+//   email: string;
+// }
 
 interface Database {
   Id: number;
@@ -133,9 +133,7 @@ const DatabaseView = () => {
         </table>
       ) : (
         <div className="text-center text-sm">
-          <span>
-            You have no saved database.
-          </span>
+          <span>You have no saved database.</span>
         </div>
       )}
 
