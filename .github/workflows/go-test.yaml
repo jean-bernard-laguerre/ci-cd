@@ -40,6 +40,8 @@ jobs:
 
   #  RUN GO TEST
   run-go-test:
+    outputs:
+      outcome: ${{job.status}}
     runs-on: ubuntu-latest
 
     services:
@@ -94,7 +96,7 @@ jobs:
         uses: SimonScholz/google-chat-action@v1.1.0
         with:
           webhookUrl: "${{ secrets.CHAT_LINK }}"
-          jobStatus: ${{ job.status }}
+          jobStatus: ${{ needs.run-go-test.outputs.outcome }}
           title: "${{ needs.get-user-infos.outputs.user }} a créé une pull request"
           subtitle: "Pull Request sur le main || repo: ${{ needs.get-repo-name.outputs.repo-name }}"
           imageUrl: "https://github.com/${{ needs.get-user-infos.outputs.user }}.png?size=200"
