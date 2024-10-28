@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ArchiveRestore, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { actions as historyAction } from "@/services/historyService";
 
 interface History {

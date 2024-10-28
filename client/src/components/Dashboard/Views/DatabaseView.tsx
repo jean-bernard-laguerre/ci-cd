@@ -7,11 +7,6 @@ import { toast } from "sonner";
 import { DatabaseForm } from "../Forms/DatabaseForm";
 import Modal from "../Modal";
 
-interface User {
-  id: number;
-  email: string;
-}
-
 interface Database {
   Id: number;
   Name: string;
