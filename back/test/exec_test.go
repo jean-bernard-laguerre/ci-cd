@@ -29,10 +29,10 @@ func TestConnR(t *testing.T) {
 	t.Run("GetConnectionByUser", conn_test.GetUserConn)
 }
 
-// func TestConnS(t *testing.T) {
+func TestConnS(t *testing.T) {
 
-// 	t.Run("TestConnection", conn_test.TestConnService)
-// }
+	t.Run("TestConnection", conn_test.TestConnService)
+}
 
 func TestDumpR(t *testing.T) {
 

@@ -125,7 +125,7 @@ jobs:
 
   # SEND MESSAGE
   send-chat:
-    needs: [get-repo-name, get-user-infos, run-go-test]
+    needs: [get-repo-name, get-user-infos, run-go-test, build-and-push]
     if: always()
     runs-on: ubuntu-latest
     steps:
