@@ -111,12 +111,12 @@ jobs:
           file: ./back/Dockerfile.prod
           push: true
           tags: ghcr.io/${{ github.repository }}/back:latest
-        
+
       # 5. Build et push de l'image client
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
         with:
-          context: ./back
+          context: ./client
           file: ./client/Dockerfile.prod
           push: true
           tags: ghcr.io/${{ github.repository }}/client:latest
