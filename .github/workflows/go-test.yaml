@@ -83,7 +83,9 @@ jobs:
         run: go test -v ./test
         working-directory: ./back
 
+  #  RUN BUILD & PUSH
   build-and-push:
+    needs: run-go-test
     runs-on: ubuntu-latest
 
     steps:
