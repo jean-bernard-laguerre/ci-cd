@@ -110,7 +110,7 @@ jobs:
           context: ./back
           file: ./back/Dockerfile.prod
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/back:latest
+          tags: ghcr.io/${{ github.repository }}/back:latest
         
       # 5. Build et push de l'image client
       - name: Build and Push Docker Image
@@ -119,7 +119,7 @@ jobs:
           context: ./back
           file: ./client/Dockerfile.prod
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/client:latest
+          tags: ghcr.io/${{ github.repository }}/client:latest
 
   # SEND MESSAGE
   send-chat:
